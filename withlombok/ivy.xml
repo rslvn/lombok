@@ -8,7 +8,12 @@
 	<dependencies>
 		<dependency org="org.springframework.boot" name="spring-boot-starter" rev="${spring-boot.version}" conf="compile" />
 		<dependency org="org.springframework.boot" name="spring-boot-loader" rev="${spring-boot.version}" conf="loader->default" />
+		<dependency org="org.springframework" name="spring-web" rev="5.0.8.RELEASE" conf="compile->master" />
+        <dependency org="org.springframework" name="spring-webmvc" rev="5.0.8.RELEASE" conf="compile->master" />
+		<dependency org="com.google.guava" name="guava" rev="26.0-jre" conf="compile->master" />
+		<dependency org="org.apache.commons" name="commons-text" rev="1.4" conf="compile->master" />
+        <dependency org="org.apache.commons" name="commons-lang3" rev="3.7" conf="compile->master" />
 		<dependency org="org.projectlombok" name="lombok" rev="1.18.2" conf="compile->master" />
-		<dependency org="org.apache.commons" name="commons-text" rev="1.4" conf="compile" />
+		<dependency org="com.fasterxml.jackson.core" name="jackson-databind" rev="2.9.6" conf="compile->master" />
 	</dependencies>
 </ivy-module>

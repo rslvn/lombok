@@ -45,12 +45,17 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web:2.0.4.RELEASE")
     // https://mvnrepository.com/artifact/org.apache.commons/commons-text
     compile group: 'org.apache.commons', name: 'commons-text', version: '1.4'
+
+    // https://mvnrepository.com/artifact/com.google.guava/guava
+    compile group: 'com.google.guava', name: 'guava', version: '26.0-jre'
+
     // tag::actuator[]
     compileOnly 'org.projectlombok:lombok:1.18.0'
     // end::actuator[]
     // tag::tests[]
     testCompile("org.springframework.boot:spring-boot-starter-test:2.0.4.RELEASE")
     testCompile("pl.pojo:pojo-tester:0.7.5")
+    testCompile("org.projectlombok:lombok:1.18.0")
     // end::tests[]
 }
 
