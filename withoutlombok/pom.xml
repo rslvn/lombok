@@ -70,6 +70,31 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<groupId>org.eluder.coveralls</groupId>
+				<artifactId>coveralls-maven-plugin</artifactId>
+				<version>4.3.0</version>
+				<configuration>
+					<repoToken>I2TLBnPoGdLmksnwB9cPiWNfSAbedUwEb</repoToken>
+					<coberturaReports>${project.reporting.outputDirectory}/cobertura/coverage.xml</coberturaReports>
+					<sagaReports>${project.build.directory}/saga-coverage/total-coverage.xml</sagaReports>
+					<jacocoReports>${project.reporting.outputDirectory}/jacoco/jacoco.xml</jacocoReports>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.1</version>
+				<executions>
+					<execution>
+						<id>prepare-agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 
