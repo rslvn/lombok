@@ -60,7 +60,6 @@
 				<artifactId>coveralls-maven-plugin</artifactId>
 				<version>4.3.0</version>
 				<configuration>
-					<skip>true</skip>
 					<repoToken>TM4vB7FlvAoNNQ2EgErkhYSaEwUJlLSCN</repoToken>
 				</configuration>
 			</plugin>
