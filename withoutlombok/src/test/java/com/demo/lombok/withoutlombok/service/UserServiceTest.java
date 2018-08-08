@@ -76,7 +76,7 @@ public class UserServiceTest {
 		long first = userService.getLastScheduleTime();
 		TimeUnit.MILLISECONDS.sleep(1010);
 		long second = userService.getLastScheduleTime();
-
+		LOG.info("first: {}, second: {}",first,second);
 		Assert.assertTrue("lastScheduleTime is 0", second > first);
 	}
 
@@ -87,6 +87,15 @@ public class UserServiceTest {
 		List<User> userList = userService.getUserList();
 		LOG.info("list size: {}", userList.size());
 		Assert.assertTrue("User not exist", userList.contains(user));
+	}
+
+	@Test
+	public void testScheduledRunCount() throws InterruptedException {
+		long first = userService.getScheduledRunCount();
+		TimeUnit.MILLISECONDS.sleep(1010);
+		long second = userService.getScheduledRunCount();
+		LOG.info("first: {}, second: {}",first,second);
+		Assert.assertTrue("lastScheduleTime is 0", second > first);
 	}
 
 }

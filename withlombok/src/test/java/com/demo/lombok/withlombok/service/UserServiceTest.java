@@ -60,22 +60,31 @@ public class UserServiceTest {
 		User user = userService.getUserWithBuilder();
 		Assert.assertNotNull("user can not be null", user);
 	}
-	
+
 	@Test
 	public void testEqualsAndHashCode() {
 		final User user1 = userService.getUserWithBuilder();
 		final User user2 = User.builder().id(user1.getId()).name(user1.getName()).build();
 		boolean same = user1.equals(user2) && user1.hashCode() == user2.hashCode();
-		
+
 		Assert.assertTrue("equalsAndHashCode ", same);
 	}
-	
+
 	@Test
 	public void testLastScheduleTime() throws InterruptedException {
 		long first = userService.getLastScheduleTime();
 		TimeUnit.MILLISECONDS.sleep(1010);
 		long second = userService.getLastScheduleTime();
+		log.info("first: {}, second: {}", first, second);
+		Assert.assertTrue("lastScheduleTime is 0", second > first);
+	}
 
+	@Test
+	public void testScheduledRunCount() throws InterruptedException {
+		long first = userService.getScheduledRunCount();
+		TimeUnit.MILLISECONDS.sleep(1010);
+		long second = userService.getScheduledRunCount();
+		log.info("first: {}, second: {}", first, second);
 		Assert.assertTrue("lastScheduleTime is 0", second > first);
 	}
 

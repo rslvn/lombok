@@ -19,6 +19,7 @@ import com.google.common.collect.Lists;
 
 import lombok.Getter;
 import lombok.SneakyThrows;
+import lombok.Synchronized;
 import lombok.var;
 import lombok.extern.slf4j.Slf4j;
 
@@ -34,7 +35,10 @@ public class UserService {
 	@Getter(lazy = true)
 	private final List<User> userList = loadUsers();
 
-	@Getter private long lastScheduleTime = 0;
+	@Getter
+	private long lastScheduleTime = 0;
+	@Getter
+	private long scheduledRunCount = 0;
 
 	public User getUser() {
 		var user = new User();
@@ -83,7 +87,7 @@ public class UserService {
 			Files.delete(path);
 		}
 	}
-	
+
 	@Scheduled(fixedRate = 1000)
 	private void schedule() {
 		log.info("------------");
@@ -91,5 +95,16 @@ public class UserService {
 		log.info(LOG_FORMATTER, "getUserAllParam", getUserAllParam().toString());
 		log.info(LOG_FORMATTER, "getUserWithBuilder", getUserWithBuilder().toString());
 		lastScheduleTime = Instant.now().toEpochMilli();
+		increaseCallCount();
+	}
+
+	@Scheduled(fixedRate = 1000)
+	private void scheduleMore() {
+		increaseCallCount();
+	}
+
+	@Synchronized
+	private void increaseCallCount() {
+		scheduledRunCount++;
 	}
 }

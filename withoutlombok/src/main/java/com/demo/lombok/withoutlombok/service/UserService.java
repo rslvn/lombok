@@ -28,9 +28,11 @@ public class UserService {
 
 	private static final Logger LOG = LoggerFactory.getLogger(UserService.class);
 	private static final String LOG_FORMATTER = "{}: {}";
+	private static final Object LOCK = new Object();
 	private final AtomicReference<List<User>> userList = new AtomicReference<List<User>>();
 
 	private long lastScheduleTime = 0;
+	private long scheduledRunCount = 0;
 
 	public User getUser() {
 		User user = new User();
@@ -79,7 +81,7 @@ public class UserService {
 		try {
 			TimeUnit.MILLISECONDS.sleep(1);
 		} catch (InterruptedException e) {
-			LOG.error("error while sleeping", e);
+			throw new RuntimeException("error while sleeping",e);
 		}
 
 		// this is just for exception
@@ -88,7 +90,7 @@ public class UserService {
 			try {
 				Files.delete(path);
 			} catch (IOException e) {
-				LOG.error("error while delete file", e);
+				throw new RuntimeException("error while delete file",e);
 			}
 		}
 	}
@@ -110,6 +112,18 @@ public class UserService {
 		LOG.info(LOG_FORMATTER, "getUserAllParam", getUserAllParam().toString());
 		LOG.info(LOG_FORMATTER, "getUserWithBuilder", getUserWithBuilder().toString());
 		lastScheduleTime = Instant.now().toEpochMilli();
+		increaseCallCount();
+	}
+	
+	@Scheduled(fixedRate = 1000)
+	private void scheduleMore() {
+		increaseCallCount();
+	}
+
+	private void increaseCallCount() {
+		synchronized (LOCK) {
+			scheduledRunCount++;
+		}
 	}
 
 	/**
@@ -118,4 +132,12 @@ public class UserService {
 	public long getLastScheduleTime() {
 		return lastScheduleTime;
 	}
+
+	/**
+	 * @return the scheduledRunCount
+	 */
+	public long getScheduledRunCount() {
+		return scheduledRunCount;
+	}
+
 }
