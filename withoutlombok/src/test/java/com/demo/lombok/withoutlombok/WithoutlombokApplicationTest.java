@@ -14,7 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = WithoutlombokApplication.class)
-public class WithoutlombokApplicationTests {
+public class WithoutlombokApplicationTest {
 	@Test
 	public void contextLoads() {
 	}

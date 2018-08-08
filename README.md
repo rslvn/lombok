@@ -5,3 +5,10 @@
 [![Coverage Status](https://coveralls.io/repos/github/rslvn/lombok/badge.svg?branch=master)](https://coveralls.io/github/rslvn/lombok?branch=master)
 ### pojo-tester
 [pojo-tester](https://www.pojo.pl/)
+
+
+#### Some Hints
+
+##### Skipping JaCoCo execution due to missing execution data file.
+- Test file names should end with "Test" not "Tests". 
+> Should be ApplicationTest.java, not ApplicationTests.java

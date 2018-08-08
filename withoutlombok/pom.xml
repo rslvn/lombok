@@ -76,8 +76,6 @@
 				<version>4.3.0</version>
 				<configuration>
 					<repoToken>TM4vB7FlvAoNNQ2EgErkhYSaEwUJlLSCN</repoToken>
-					<coberturaReports>${project.reporting.outputDirectory}/cobertura/coverage.xml</coberturaReports>
-					<sagaReports>${project.build.directory}/saga-coverage/total-coverage.xml</sagaReports>
 					<jacocoReports>${project.reporting.outputDirectory}/jacoco/jacoco.xml</jacocoReports>
 				</configuration>
 			</plugin>

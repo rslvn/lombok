@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.demo.lombok.withoutlombok.exception;
+package com.demo.lombok.withlombok.exception;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -13,7 +13,7 @@ import pl.pojo.tester.api.assertion.Method;
  * @author resulav
  *
  */
-public class UserExceptionTests {
+public class UserExceptionTest {
 
 	@Test(expected = UserException.class)
 	public void testConstructorAll() {

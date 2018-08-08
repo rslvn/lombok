@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.demo.lombok.withlombok.model;
+package com.demo.lombok.withoutlombok.model;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;
@@ -15,7 +15,7 @@ import pl.pojo.tester.api.assertion.Method;
  * @author resulav
  *
  */
-public class UserTests {
+public class UserPojoTest {
 
 	@Test
 	public void testUser() {
@@ -24,13 +24,13 @@ public class UserTests {
 
 	@Test
 	public void testUserBuilder() {
-		User user=User.builder().id(RandomUtils.nextLong()).name(RandomStringUtils.randomAlphanumeric(10)).build();
+		User user=User.newBuilder().id(RandomUtils.nextLong()).name(RandomStringUtils.randomAlphanumeric(10)).build();
 		Assert.assertNotNull("user can not be null",user);
 	}
 
 	@Test(expected = NullPointerException.class)
 	public void testUserBuilderNullId() {
-		User.builder().name(RandomStringUtils.randomAlphanumeric(10)).build();
+		User.newBuilder().name(RandomStringUtils.randomAlphanumeric(10)).build();
 	}
 
 }

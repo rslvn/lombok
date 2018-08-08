@@ -39,7 +39,7 @@ import lombok.SneakyThrows;
  *
  */
 @RunWith(SpringRunner.class)
-public class UserControllerTests {
+public class UserControllerTest {
 
 	private ObjectMapper mapper;
 	private TypeFactory typeFactory;

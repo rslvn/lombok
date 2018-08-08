@@ -12,7 +12,7 @@ import pl.pojo.tester.api.assertion.Method;
  * @author resulav
  *
  */
-public class UserDataTests {
+public class UserDataTest {
 	@Test
 	public void testUserData() {
 		Assertions.assertPojoMethodsFor(UserData.class).testing(Method.values()).areWellImplemented();

@@ -13,7 +13,7 @@ import org.junit.Test;
  * @author resulav
  *
  */
-public class UserTests {
+public class UserTest {
 
 	private final Long id = 1L;
 	private final String name = "dummyName";

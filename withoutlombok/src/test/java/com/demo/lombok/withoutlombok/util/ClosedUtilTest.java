@@ -1,9 +1,8 @@
 /**
  * 
  */
-package com.demo.lombok.withlombok.util;
+package com.demo.lombok.withoutlombok.util;
 
-import java.io.Closeable;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.Files;
@@ -13,29 +12,27 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Test;
 
-import lombok.Cleanup;
-import lombok.SneakyThrows;
-import lombok.extern.slf4j.Slf4j;
-
 /**
  * @author resulav
  *
  */
-@Slf4j
-public class ClosedUtilTests {
+public class ClosedUtilTest {
 
-	private static final String filename = "test_withlombok.txt";
+	private static final String filename = "test_withoutlombok.txt";
 
-	@SneakyThrows
 	@AfterClass
-	public static void teardown() {
-		Files.delete(Paths.get(filename));
+	public static void teardown() throws IOException {
+		try {
+			Files.delete(Paths.get(filename));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Test
-	public void testConstructor() {
+	public void testConstructor(){
 		ClosedUtil closedUtil = new ClosedUtil();
-		Assert.assertNotNull("closedUtil can not be null", closedUtil);
+		Assert.assertNotNull("closedUtil can not be null",closedUtil);
 	}
 
 	@Test
@@ -50,10 +47,11 @@ public class ClosedUtilTests {
 	@Test
 	public void testClosedFileEmptyTexts() throws IOException {
 		String[] texts = { "dummy line3", "dummy line4" };
+
 		try {
 			ClosedUtil.write(filename);
 		} catch (Exception e) {
-			log.error("", e);
+			e.printStackTrace();
 		}
 
 		ClosedUtil.write(filename, texts);
@@ -63,26 +61,7 @@ public class ClosedUtilTests {
 	public void testClosedFileNotClosed() throws IOException {
 		String[] textsNew = { "dummy line5", "dummy line6" };
 		OutputStream out = ClosedUtil.write(filename, textsNew);
-		out.write("test".getBytes());
+		out.write("testClosedFileNotClosed".getBytes());
 	}
 
-	@Test
-	public void testClosable() throws IOException {
-		@Cleanup
-		DummyClosable dummyClosable = new DummyClosable();
-	}
-
-	@Test(expected = RuntimeException.class)
-	public void testClosableException() throws IOException {
-		@Cleanup
-		DummyClosable dummyClosable = new DummyClosable();
-		throw new RuntimeException("Dummy exception");
-	}
-
-	private class DummyClosable implements Closeable {
-		@Override
-		public void close() throws IOException {
-			log.info("{} closed", this.getClass().getSimpleName());
-		}
-	}
 }
