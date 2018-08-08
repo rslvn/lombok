@@ -75,7 +75,7 @@
 				<artifactId>coveralls-maven-plugin</artifactId>
 				<version>4.3.0</version>
 				<configuration>
-					<repoToken>I2TLBnPoGdLmksnwB9cPiWNfSAbedUwEb</repoToken>
+					<repoToken>2d490e8a88d0ecb83b4cd0a6ba4b2207c475b51a</repoToken>
 					<coberturaReports>${project.reporting.outputDirectory}/cobertura/coverage.xml</coberturaReports>
 					<sagaReports>${project.build.directory}/saga-coverage/total-coverage.xml</sagaReports>
 					<jacocoReports>${project.reporting.outputDirectory}/jacoco/jacoco.xml</jacocoReports>
