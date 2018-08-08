@@ -51,7 +51,7 @@ java -jar build/libs/withlombok-0.0.1-SNAPSHOT.jar
 ```
 
 
-### delombok
+## delombok
 ```
 java -jar ~/.m2/repository/org/projectlombok/lombok/1.18.2/lombok-1.18.2.jar delombok src -d src-delomboked
 ```
