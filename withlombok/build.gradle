@@ -1,0 +1,62 @@
+buildscript {
+    ext {
+        springBootVersion = '2.0.4.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+
+version = '0.0.1-SNAPSHOT'
+
+jar {
+    baseName = 'withlombok'
+    version =  version
+}
+
+ext {
+    lombokVersion = "1.18.0"
+}
+
+repositories {
+    jcenter()
+    mavenCentral()
+    mavenLocal()
+    maven { url "http://repo.spring.io/libs-snapshot" }
+    maven { url "http://repo.spring.io/milestone" }
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+}
+
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web:2.0.4.RELEASE")
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-text
+    compile group: 'org.apache.commons', name: 'commons-text', version: '1.4'
+    // tag::actuator[]
+    compileOnly 'org.projectlombok:lombok:1.18.0'
+    // end::actuator[]
+    // tag::tests[]
+    testCompile("org.springframework.boot:spring-boot-starter-test:2.0.4.RELEASE")
+    testCompile("pl.pojo:pojo-tester:0.7.5")
+    // end::tests[]
+}
+
+test {
+    afterTest { desc, result ->
+        logger.quiet "Executing test ${desc.name} [${desc.className}] with result: ${result.resultType}"
+    }
+}
+
