@@ -72,7 +72,7 @@ public class UserService {
 	 * @throws InterruptedException
 	 * @throws IOException
 	 */
-	@SneakyThrows
+	@SneakyThrows({InterruptedException.class,IOException.class})
 	public void putUser(User user) {
 		Preconditions.checkArgument(user != null, "user can not be null");
 		Preconditions.checkArgument(user.getId() != null, "user.id can not be null");

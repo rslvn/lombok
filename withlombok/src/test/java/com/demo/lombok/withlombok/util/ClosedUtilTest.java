@@ -29,7 +29,12 @@ public class ClosedUtilTest {
 	@SneakyThrows
 	@AfterClass
 	public static void teardown() {
-		Files.delete(Paths.get(filename));
+		try {
+			Files.delete(Paths.get(filename));
+		} catch (Exception e){
+			log.info("",e);
+		}
+
 	}
 
 	@Test
