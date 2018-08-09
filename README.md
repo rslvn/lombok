@@ -10,10 +10,64 @@ mvn clean install
 ```
 
 ## Run
-
+#### Docs
 Follow:
 - [withlombok](withlombok/README.md)
 - [withoutlombok](withlombok/README.md)
+
+#### Docker
+> Firstly, execute Build step
+```
+docker-compose build
+docker-compose down
+docker-compose up -d
+```
+
+##### connect containers
+###### withlombok
+```
+~$ docker exec -it withlombok /bin/sh
+
+```
+###### withoutlombok
+```
+~$ docker exec -it withoutlombok /bin/sh
+```
+
+##### container logs
+###### withlombok
+```
+~$docker logs withlombok -f
+
+```
+
+###### withoutlombok
+```
+~$docker logs withoutlombok -f
+```
+
+## Test
+
+#### container IPs
+```
+docker network inspect lombok_default
+```
+
+### User Resource
+
+> learn the IPs from "container IPs" step. Replace the IP of the withlombok or withoutlombok with IP that is in following command's URL
+
+- list users
+```
+curl -H "Content-Type: application/json" -X GET http://172.21.0.2:8080/user/list
+```
+
+- put user
+```
+curl -H "Content-Type: application/json" -X PUT http://172.21.0.2:8080/user/ -d '
+{"id":1254265746892828672,"name":"sample name"}
+'
+```
 
 ## Links
 - [lombok](https://projectlombok.org/)

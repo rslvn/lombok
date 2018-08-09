@@ -1,0 +1,12 @@
+version: '3.3'
+services:
+    withlombok:
+        build: ./withlombok
+        restart: always
+        container_name: withlombok
+        hostname: withlombok
+    withoutlombok:
+        build: ./withoutlombok
+        restart: always
+        container_name: withoutlombok
+        hostname: withoutlombok

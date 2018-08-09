@@ -18,34 +18,34 @@
 
 ## build
 
-### ant
+#### ant
 ```
 ant clean manual
 ```
 
-### maven
+#### maven
 ```
 mvn clean install
 ```
 
-### gradle
+#### gradle
 ```
 gradle build
 ```
 
 ## run
 
-### ant
+#### ant
 ```
 java -jar target/withlombok-0.0.1-SNAPSHOT.jar 
 ```
 
-### maven
+#### maven
 ```
 java -jar target/withlombok-0.0.1-SNAPSHOT.jar
 ```
 
-### gradle
+#### gradle
 ```
 java -jar build/libs/withlombok-0.0.1-SNAPSHOT.jar
 ```
